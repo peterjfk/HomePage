@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Communication Link using Sound Waves
-comments: true
-category: blog
 
 
 ---
