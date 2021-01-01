@@ -3,7 +3,7 @@ layout: post
 title: Communication Link using Sound Waves
 comments: true
 category: blog
-image: /images/icon.png
+image: https://github.com/peterjfk/projects/blob/master/images/icon.png
 
 ---
 # Motivation
