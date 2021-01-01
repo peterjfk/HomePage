@@ -11,3 +11,7 @@ url: https://peterjfk.github.io
 baseurl: /projects
 search: true
 markdown: kramdown
+
+name: e^2 Projects
+description: EE Projects Portfolio
+url: http://peterjfk.github.io
