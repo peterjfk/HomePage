@@ -11,7 +11,48 @@ category: blog
 ## Design
 
 
-![](https://github.com/peterjfk/projects/blob/master/images/PC2PC.png)
+![sound communication] (https://github.com/peterjfk/projects/blob/master/images/PC2PC.png)
 
        
 To create a signal corresponding to the data transfered from the server, we use frequency shift keying method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
