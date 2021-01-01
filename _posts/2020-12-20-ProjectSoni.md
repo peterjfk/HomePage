@@ -9,3 +9,4 @@ title: Communication Link using Sound Waves
 
 ![Communication Link using sound waves](/images/pc2pc.jpg "data transfer using sound waves" )
 
+Format: ![Alt Text](https://github.com/peterjfk/projects/blob/master/images/pc2pc.jpg)
