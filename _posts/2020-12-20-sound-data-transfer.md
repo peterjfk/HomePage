@@ -10,7 +10,7 @@ category: blog
 
 ## Design
 
-![Img](https://github.com/peterjfk/projects/tree/master/_posts/icon.png)
+![Img](images/icon.png)
 
        
 To create a signal corresponding to the data transfered from the server, we use frequency shift keying method.
