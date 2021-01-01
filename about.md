@@ -1,9 +1,9 @@
 ---
 layout: page
-title: About
+title: 
 ---
 
-# There's little to know about me here. 
+There's little to know about me here. 
 Reasons:
 1
 2
