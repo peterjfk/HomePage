@@ -11,3 +11,4 @@ title: Communication Link using Sound Waves
 ![Alt Text](https://github.com/peterjfk/projects/blob/master/images/pc2pc.jpg)
        
 To create a signal corresponding to the data transfered from the server, we use frequency shift keying method.
+file:///home/peterj/Desktop/projects/images/PC2PC.png
