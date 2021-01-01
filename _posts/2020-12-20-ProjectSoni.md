@@ -9,5 +9,5 @@ title: Communication Link using Sound Waves
 
 
 ![Alt Text](https://github.com/peterjfk/projects/blob/master/images/pc2pc.jpg)
-Communication Link using sound waves 
+          *Communication Link using sound waves*
 
