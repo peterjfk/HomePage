@@ -3,7 +3,7 @@ layout: post
 title: Communication Link using Sound Waves
 comments: true
 category: blog
-image: projects/images/icon.png
+
 
 ---
 # Motivation
@@ -11,7 +11,7 @@ image: projects/images/icon.png
 
 ## Design
 
-![Img](images/icon.png)
+![Img](projects/images/icon.png)
 
        
 To create a signal corresponding to the data transfered from the server, we use frequency shift keying method.
