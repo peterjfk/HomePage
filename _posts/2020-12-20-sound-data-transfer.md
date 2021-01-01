@@ -9,8 +9,11 @@ title: Communication Link using Sound Waves
 
 ## Design
 
-![img](https://en.wikipedia.org/wiki/File:Kittyply_edit1.jpg)
+<div class="fig figcenter fighighlight">
+  <img src="/images/icon.png">
+  <div class="figcaption"><br>Now this looks like a more fun gate! two inputs-two outputs! This node subtracts the per-feature mean row-wise of each trainings example `n for n in [1...N]` during the forward pass.<br>
+  </div>
+</div>
 
-       
 To create a signal corresponding to the data transfered from the server, we use frequency shift keying method.
 
