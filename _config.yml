@@ -1,8 +1,15 @@
-title: e^2 Projects
-theme: minima
-author: Peter
-email: donnelpicasso@gmail.com
-description: Portfolio of electrical& computer engineering projects
+
+title: Projects
+
+
+
+author: Peter J
+pub_year: 2020
 github_username: peterjfk
 
+# add the full url for the github repository
+repo: "https://github.com/peterjfk.github.io/projects"
+url: https://peterjfk.github.io
+baseurl: /projects
+search: true
 markdown: kramdown
