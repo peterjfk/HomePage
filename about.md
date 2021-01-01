@@ -3,5 +3,5 @@ layout:page
 title: About
 ---
 # About
-## Junior Engineering Student/Hobbiest
+Junior Engineering Student/Hobbiest
 
