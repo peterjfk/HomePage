@@ -7,3 +7,9 @@ title: Communication Link using Sound Waves
 
 
 ![Communication using Air Transmission Line](/projects/images/soundTransfer/pc2pc.png)
+
+
+## Design
+Frequency modulating bits of infornation between two frequencies as shown below:
+
+![img](https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Fsk.svg/800px-Fsk.svg.png)
