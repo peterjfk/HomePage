@@ -3,7 +3,7 @@ layout: post
 title: Communication Link using Sound Waves
 comments: true
 category: blog
-image:projects/images/icon.png
+image: projects/images/icon.png
 
 ---
 # Motivation
