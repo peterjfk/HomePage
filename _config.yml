@@ -6,14 +6,14 @@ pub_year: 2020
 github_username: peterjfk
 
 # add the full url for the github repository
-repo: "https://github.com/peterjfk.github.io/projects"
-url: https://peterjfk.github.io
-baseurl: /projects
+#repo: "https://github.com/peterjfk.github.io/projects"
+#url: https://peterjfk.github.io
+#baseurl: /projects
 search: true
 markdown: kramdown
 
 name: e^2 Projects
 description: EE Projects Portfolio
-url: http://peterjfk.github.io
+#url: http://peterjfk.github.io
 plugins:
   - jekyll-feed
