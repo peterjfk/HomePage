@@ -8,6 +8,5 @@ title: Communication Link using Sound Waves
 ## Design
 
 
-![Alt Text](https://github.com/peterjfk/projects/blob/master/images/pc2pc.jpg)
-          *Communication Link using sound waves*
-
+![Alt Text](https://github.com/peterjfk/projects/images/pc2pc.jpg)
+       
