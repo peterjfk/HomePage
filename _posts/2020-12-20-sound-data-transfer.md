@@ -9,7 +9,7 @@ title: Communication Link using Sound Waves
 
 ## Design
 
-![img](projects/images/IMG_20200609_160651.jpg)
+![img](https://en.wikipedia.org/wiki/File:Kittyply_edit1.jpg)
 
        
 To create a signal corresponding to the data transfered from the server, we use frequency shift keying method.
