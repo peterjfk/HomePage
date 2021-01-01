@@ -15,3 +15,5 @@ markdown: kramdown
 name: e^2 Projects
 description: EE Projects Portfolio
 url: http://peterjfk.github.io
+plugins:
+  - jekyll-feed
