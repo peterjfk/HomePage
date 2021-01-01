@@ -11,8 +11,6 @@ category: blog
 ## Design
 
 
-![fig] (/pc2pc.jpg)
-
        
 To create a signal corresponding to the data transfered from the server, we use frequency shift keying method.
 
