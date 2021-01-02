@@ -184,4 +184,4 @@ We create a plain text file "testdoc.txt" with the contents `Hello, World` and s
 
 ### Conclusion:
 
-It works, getting a single test to work took a while. On the image you can observe three `Hello, world` texts with a lot of mumbo jumbo in between. That is because I played the file thrice. The `ld` seems to have been non recoverable but that can be associated with the noise level added with reflections and delays.
+It works, getting a single test to work took a while. On the image you can observe three `Hello, world` texts with a lot of mumbo jumbo in between. That is because I played the file thrice. The `ld` seems to have been non recoverable but that can be associated with the noise in the environment and added interference due to reflections.
