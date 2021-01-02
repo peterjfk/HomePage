@@ -28,9 +28,9 @@ $$ \begin{equation} y(t)=cos(2\pi [f_{0}+f_1 x(t)]t) \end{equation} $$
 
 To decode the signal on the receiving computer, we need a way of identifying the frequency components of the modulated signal at every possible block corresponding to a bit. We also recognize that the sinusoid is a discrete signal during both modulation and demodulation. By making every bit containing block correspond to a fixed number of samples $$ N $$ , we need only calculate an $$ N $$-point Discrete Fourier Transform (DFT). 
 
-Although we could use the already optimised FFT algorithm to perform the DFT at $$ n \;log(n)$$ time, we only need the DFT at two frequencies thus using the FFT is ineffiencint. We resolve to use a simplified form of the FFT, the Geortzel algorithm which calculates the $$ N $$ point DFT in $$log(N) $$ time using a recursive formula i.e. 
-$$  \begin{equation} X(k)=\sum_0^{n-1}x(n)W_N^{kn}=y_k \end{equation} $$ $$ \text {where}$$
- $$  \begin{equation} y_k=y(n-1)W_N^{-k} + x(n) \quad \forall \ n\subset N  \ | y(-1)=0 \quad \text {and} \quad   W_N^{k}=e^{-jk2\pi /N} \end{equation}  $$
+Although we could use the already optimised FFT algorithm to perform the DFT at $$ n \;log(n)$$ time, we only need the DFT at two frequencies thus using the FFT is inefficient. We resolve to use a simplified form of the FFT, the Geortzel algorithm which calculates the $$ N $$ point DFT in $$log(N) $$ time using a recursive formula i.e. 
+$$  \begin{equation} X(k)=\sum_{n=0}^{N-1}x(n)W_N^{kn}=y_k \end{equation} $$ $$ \text {where}$$
+ $$  \begin{equation} y_k=y(n-1)W_N^{-k} + x(n) \quad \forall \ n\in N  \ | y(-1)=0 \quad \text {and} \quad   W_N^{k}=e^{-jk2\pi /N} \end{equation}  $$
 
 <br>
 <br>
@@ -191,4 +191,4 @@ We create a plain text file "testdoc.txt" with the contents `Hello, World` and s
 <br>
 ### Conclusion
 
-It works, getting a single test to work took a while. On the image you can observe three `Hello, world` texts with a lot of mumbo jumbo in between. That is because I played the file thrice. The `ld` seems to have been non recoverable but that can be associated with the noise in the environment and added interference due to reflections.
+It works! 😌, getting a single test to work took a while. On the image you can observe three `Hello, world` texts with a lot of mumbo jumbo in between. That is because I played the file thrice. The `ld` seems to have been non recoverable but that can be associated with the noise in the environment and added interference due to reflections.
