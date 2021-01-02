@@ -28,7 +28,8 @@ url: "https://peterjfk.github.io" # the base hostname & protocol for your site, 
 github_username:  peterjfk
 
 # Build settings
-theme: minima
+# using regular theme
+# theme: minima
 plugins:
   - jekyll-feed
 
