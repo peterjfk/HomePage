@@ -6,18 +6,21 @@ costumjs: http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HT
 
 ---
 
-
 # Motivation
 About a year ago, the PC I owed from highschool crashed: it would turn on but neither the WiFi, bluetooth, Ethernet or USB ports worked. As this was near the end of the semester the situation was very dire so I used ended up buying another PC when my search for possible fixes ended. Fast forward a year latter, I realized that even without wires or fancy radio frequency tranceivers, point to point communication is still possible. Best example is how humans communicate by making sounds in the audible frequency range. Having had Audacity, a fairly advanced sound recording software on the old PC, a text editor, and a working c/c++ compiler, I was lucky. I could use my new PC to create and play a sound file containing some information and record it over on my old PC . I would then save the sound file in some format, and apply some signal processing concepts to recover the encoded information.
 
 
 
 ## Theory
-In order to transfer useful information between the two computers, we need a way systematically encode the the information we want to send in the form of sound waves which we would play over a speaker. 
+In order to transfer useful information between the two computers in a server-to-client modal, we need a way systematically encode the the information we want to send from the server in the form that can be recovered by the client. The idea here is to encode the information in sound waves which we would play over a speaker at the server, and recorded at the client for decoding.
 
-To encode this information, I had to resolve to FM encoding i.e frequency modulation as amplitude modulation, AM, is too suspectible to literal noise from the environment although it has the advantage of higher data rates. 
+To encode this information, I used \frequency modulation (FM) as amplitude modulation (AM), is too suspectible to literal noise from the environment despite it having the advantage of higher data rates. 
 
-To perform frequency modulation we need a carrier wave and the signal. Let $$ x(t) $$ represent the information signal, and $$ y(t) $$ the modulated signal when we use a sinusoidal carrier wave of form $$ cos(\theta)$$. Frequency modulating implies the rate of change of angle $$ \theta $$  of the carrier wave is proportional to the frequency of the modulated signals. For simplicity in decoding/demodulating, we choose two frequencies corresponding to a `1` or a `0` in a bit of information, $$ f_1$$ and $$ f_0 $$,  respectively. The overall function of the modulated signal is worked out to be $$ y(t)=cos(2\pi [f_{0}+f_1 x(t)]t) $$. Using examplar data and a sinusoidal carrier, we obtain a modulated signal of the form shown below:
+To perform frequency modulation we need a carrier wave and the signal. Let $$ x(t) $$ represent the information signal, and $$ y(t) $$ the modulated signal when we use a sinusoidal carrier wave of form $ cos(\theta_i)$. Frequency modulating implies the rate of change of angle $$ \theta $$  of the carrier wave is proportional to the frequency of the modulated signals. For simplicity in decoding/demodulating, we choose two frequencies corresponding to a `1` or a `0` in a bit of information, $$ f_1$$ and $$ f_0 $$,  respectively. The overall function of the modulated signal  worked out to be
+
+$$ \begin{equation} y(t)=cos(2\pi [f_{0}+f_1 x(t)]t) \end{equation} $$
+
+ Using examplar data and a sinusoidal carrier, we obtain a modulated signal of the form shown below:
 
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Fsk.svg/800px-Fsk.svg.png  ){:height="500px" width="450px" .image-caption }
 
@@ -25,24 +28,22 @@ To perform frequency modulation we need a carrier wave and the signal. Let $$ x(
 
 To decode the signal on the receiving computer, we need a way of identifying the frequency components of the modulated signal at every possible block corresponding to a bit. We also recognize that the sinusoid is a discrete signal during both modulation and demodulation. By making every bit containing block correspond to a fixed number of samples $$ N $$ , we need only calculate an $$ N $$-point Discrete Fourier Transform (DFT). 
 
-Although we could use the already optimised FFT algorithm to perform the DFT at $$ nlog(n)$$ time, we only need the DFT at two frequencies thus using the FFT is ineffiencint. We resolve to use a simplified form of the FFT, the Geortzel algorithm which calculates the $$ N $$ point DFT at $$log(N) $$ time using a recursive formula i.e. 
-$$ X(k)=\sum_0^{n-1}x(n)W_N^{kn}=y_k $$ 
-where $$   y_k=y(n-1)W_N^{-k} + x(n) $$   
-for all $$ N $$ such that $$ y(-1)=0  $$ and
-$$ W_N^{k}=e^{-jk2\pi /N}$$ 
+Although we could use the already optimised FFT algorithm to perform the DFT at $$ n \;log(n)$$ time, we only need the DFT at two frequencies thus using the FFT is ineffiencint. We resolve to use a simplified form of the FFT, the Geortzel algorithm which calculates the $$ N $$ point DFT in $$log(N) $$ time using a recursive formula i.e. 
+$$  \begin{equation} X(k)=\sum_0^{n-1}x(n)W_N^{kn}=y_k \end{equation} $$ $$ \text {where}$$
+ $$  \begin{equation} y_k=y(n-1)W_N^{-k} + x(n) \quad \forall \ n\subset N  \ | y(-1)=0 \quad \text {and} \quad   W_N^{k}=e^{-jk2\pi /N} \end{equation}  $$
 
-
-
+<br>
+<br>
 ### Design 
-
+<br>
 1. Sound file format (.WAV)
-> I chose to work with a windows operating system native .WAV file format because it offers high quality lossless recording of audio and is easier to work with than other formats like .mp3 and .m4a file. This is also important as losing some bits of information in a lossy format could lead to further data corruption.
+> I chose to work with a windows operating system native .WAV file format because it offers high quality lossless recording of audio and is easier to work with than other formats like .mp3 and .m4a file. The lossless attribute was important as losing even a single bits of information could lead to further data corruption.
 
 2. Programming language (.c)
->Choice influenced by the availability of gcc/g++ compiler only in the client machine. This meant that I would have to mainly really on the c/c++ standard library packages and write everything else from scratch.
+>Choice influenced by the availability of gcc/g++ compiler in the client machine. This meant that I would have to mainly rely on the c/c++ standard library packages and write everything else from scratch.
 
 3. Recording software (Audacity)
-> This is a free  & open source software which happened to be in the client machine. It records sound in all file formats as opposed to the native recorder that records in only .m4a format. Furthermore, it is helpful in cutting out sessions of the recording corresponding to padding bits. I used padded the senders's modulated signal with a third frequency corresponding for a fixed amount of time before the real transmission began to sort out the true beginning of the intended message.
+> This is a free  & open source software which happened to be in the client machine. It records sound in various file formats as opposed to the native recorder that records in only .m4a format. Furthermore, it is helpful in cutting out sessions of the recording corresponding to padding bits. I padded the senders's modulated signal with a third frequency for a fixed amount of time before the real transmission began to sort out the true beginning of the intended message.
 
 4. Test file (a plain text file)
 > It is easier to debug with as it modulates into a small .WAV file and it demodulates in bytes to the characters contained in the original .txt file.
@@ -77,7 +78,7 @@ typedef struct WAVHeader{
 
 The bit depth, typically 2 bytes, tells us the number of bytes per sample of data. The sample rate is set to be matched the server and client computer and it tells us the number of samples taken per second. The number of data bytes helps us calculate the total number of samples present in the file. 
 
-We encode the information using nested loops in c such that for every bit in a byte of information, we generate a modulated signal amplitude corresponding to the output modulating function for all samples present in the file. This is shown below in the snippet below:
+We encode the information using nested loops in c such that for every bit in a byte of information, we generate a modulated signal amplitude corresponding to the output modulating function (1) for all samples present in the file. This is shown below in the snippet below:
 
 {%highlight ruby%}
 
