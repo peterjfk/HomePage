@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Data Transfer using FM acoustic waves
-costumjs: http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
+image: projects/images/test/icon.jpg
 
 ---
 
@@ -152,27 +152,36 @@ double complex goertzel(int16_t * sa,int lsa,int k){   //pass sample array addre
 To access the N points within a period of the modulated signal we use nested loops which iterate and recover a bit of information for every N samples of the recorded file using the algorithm above and saving it to a new file.
 
 {%highlight c%}
-while (i<ns/nf){
+    //iterate all periods/frames within the samples of the WAV file with binary encoded information
+    while (i<ns/nf){
       *bptr=0;
+      //find all bits for a byte of information
       for(m=7; m>=0;m--){
       j=0;
-      int16_t ps[nf];
+      int16_t ps[nf]; //array to store the N samples in a period for a DFT
+      //iterate all N samples in a period
       while(j<nf){
+        //read all the sample values and add them to sample array
         fread(sptr,1,2,fr);
         ps[j]=*sptr;
         j++;
       }
-     double X1=cabs(goertzel(ps,nf,K1));
-     double X2=cabs(goertzel(ps,nf,K2));
-     if (X2>X1){
-       *bptr=(bmask1<<m) | bt;
+     //perform DFT to obtain the bits corresponding to N samples using the geortzel algorithmn
+     double X1=cabs(goertzel(ps,nf,K1));  //zeros frequency DFT magnitude
+     double X2=cabs(goertzel(ps,nf,K2));  //ones frequency -//-
+    
+    //compare magnitudes to determine its a zero or a one
+     if (X2/X1>1.0){
+       *bptr=(bmask1<<m) | *bptr;  //assign 1 for the value for the mth bit of the byte
+       //printf("X1=%lf X2=%lf\n",X1,X2);
      }
      else
      {
-       *bptr=(bmask0 << m) | bt;
+       *bptr=(bmask0<<m) | *bptr; //aasign 0 value for the mth bi
      }
+     
      }
-     fwrite(bptr,1,1,fo);
+     fwrite(bptr,1,1,fo); //write the decoded byte information to the output file
      i++;
     }
 
@@ -185,10 +194,10 @@ This concludes the code section, the rest of the code can be found on the reposi
 We create a plain text file "testdoc.txt" with the contents `Hello, World` and save it to the root directory of our program. We compile the soniMain.c file with "gcc soniMain.c --lm" option so as to include the math and complex c libraries. We run the executable and a new file transmit.WAV will be created. We play this audio file while simultaneously recording sound on the receiving computer. After we finish recording on the client computer, we export the recorded file as a .WAV file to the root directory folder of the project. We make necessary edits to the main file variables and compile. An output.txt file will be created, and opening it should give us the encoded message. As shown below:
 
 
-![](/projects/images/soundTransfer/output_txt.jpg)
+![](/projects/images/soundTransfer/output.jpg)
 
 
 <br>
 ### Conclusion
 
-It works! 😌, getting a single test to work took a while. On the image you can observe three `Hello, world` texts with a lot of mumbo jumbo in between. That is because I played the file thrice. The `ld` seems to have been non recoverable but that can be associated with the noise in the environment and added interference due to reflections.
+It works! 😌, getting a single test to work took a while. On the image you can observe `Hello, world` text with slight modifications. There seems to a lot of bit variations during the sending and thus much of the message is not recoverable. This problem can be alleviated by using a better microphone and by avoiding a noisy or echoy environment.
