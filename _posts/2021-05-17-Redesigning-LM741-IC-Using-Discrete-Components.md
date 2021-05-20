@@ -24,7 +24,7 @@ Working with BJTs, we have three regions of operation. The cutoff region is usel
 We first create a current source using diode connected pnp and npn transistors with their collectors linked via a resistor $$R1 $$ using the schematic shown below:
 
 
-![img](/projects/images/LM741/reference_current-schematic.jpg)
+![img](/projects/images/LM741/reference_current-schematic.png)
 
 
 
@@ -59,12 +59,12 @@ rref cnode cnode2 {var_r}
 By plotting the current over a range of $$ R1 $$ values, we determine that a resistance of around $$ R1=8k\Omega $$ is needed to pass 1mA of current for our reference current. 
 
 
-![img](/projects/images/LM741/iref.jpg)
+![img](/projects/images/LM741/iref.png)
 
 
 The convinince of using Q1 transistor in the design of the current source is that we are able to source an extra current steering circuit on top of the diode-connected Q2 transistor. Since a BJT transistors can be modelled using current sources, resistors and diodes, it is understood that the short-circuiting the collector and base results reduces the transistor model to a diode model which is a voltage dependent current source controlled by $$ V_{BE} $$. You can see this in the npn transistor model shown below:
 
-![img](/projects/images/LM741/npn_model.jpg)
+![img](/projects/images/LM741/npn_model.png)
 
  Additionally, the base-collector short circuit ensures that the transistors is always in the active region as $$ V_{BE(0.3V)}> V_{CE_sat (0.3V)} $$ . Once $$ V_{BE} $$ is established in transistor Q1, the parallel connection to transistor Q3 would ensure that $$ V_{BE3}=V_{BE2} $$ if resistor $$ R_e=0 $$ and in turn $$ I_{REF}== I_{D3} $$ would hold if the transistors are identical (thus the current mirroring action). The addition of the resistor at the emitter of the Q3 is a special current source i.e. "Widlar current source". This current source introduces an advantage over the conventional current mirror circuit which is allowing the magnitude of resistor $$ R1 $$ to be reduced and still get a well defined current in Q3 using the formula $$ \begin {equation} I_3 R3 =V_T ln(I_3/I_{REF}) \end {equation} $$
 
