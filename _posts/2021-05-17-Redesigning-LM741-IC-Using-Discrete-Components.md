@@ -59,7 +59,7 @@ rref cnode cnode2 {var_r}
 By plotting the current over a range of $$ R1 $$ values, we determine that a resistance of around $$ R1=8k\Omega $$ is needed to pass 1mA of current for our reference current. 
 
 
-![img](/projects/images/LM741/iref.png)
+![img](/projects/images/LM741/rref_1mA.png)
 
 
 The convinince of using Q1 transistor in the design of the current source is that we are able to source an extra current steering circuit on top of the diode-connected Q2 transistor. Since a BJT transistors can be modelled using current sources, resistors and diodes, it is understood that the short-circuiting the collector and base results reduces the transistor model to a diode model which is a voltage dependent current source controlled by $$ V_{BE} $$. You can see this in the npn transistor model shown below:
